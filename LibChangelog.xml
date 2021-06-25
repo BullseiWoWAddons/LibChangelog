@@ -11,5 +11,5 @@
 	<Script file="Locales\ruRU.lua"/>
 	<Script file="Locales\zhCN.lua"/>
 	<Script file="Locales\zhTW.lua"/>
-	<Script file="LibChangelog-1.0.lua"/>
+	<Script file="LibChangelog.lua"/>
 </Ui>

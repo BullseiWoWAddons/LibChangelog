@@ -1,8 +1,8 @@
---- LibChangelog-1.0
+--- LibChangelog
 -- Provides an way to create a simple ingame frame to show a changelog
 
 --[[
-LibChangelog-1.0
+LibChangelog
 
 Very light wrapper library that combines all the LibChangelog subcomponents into one more easily used whole.
 
@@ -12,7 +12,7 @@ local _, Data = ...
 local L = Data.L
 
 
-local MAJOR, MINOR = "LibChangelog-1.0", 0
+local MAJOR, MINOR = "LibChangelog", 0
 local LibChangelog = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not LibChangelog then return end
@@ -50,7 +50,7 @@ local VIEWED_MESSAGE_FONTS = {
 -- @param options The option table (or a function to generate one on demand).  http://www.wowace.com/addons/ace3/pages/ace-config-3-0-options-tables/
 -- @param slashcmd A slash command to register for the option table, or a table of slash commands.
 -- @usage
--- local LibChangelog = LibStub("LibChangelog-1.0")
+-- local LibChangelog = LibStub("LibChangelog")
 -- LibChangelog:RegisterOptionsTable("MyAddon", myOptions)
 
 
