@@ -62,7 +62,6 @@ function LibChangelog:Register(addonName, changelogTable, lastReadVersion, onlyS
 
     self[addonName] = {
         changelogTable = changelogTable,
-        options = options,
         lastReadVersion = lastReadVersion,
         onlyShowWhenNewVersion = onlyShowWhenNewVersion
     }
@@ -175,10 +174,10 @@ function LibChangelog:ShowChangelog(addonName)
         end
 
         -- Add version string
-        current = self:CreateString(addonData.frame, entry.Version, fonts.version, -30) --add a nice spacing between the version header and the previous text
+        self:CreateString(addonData.frame, entry.Version, fonts.version, -30) --add a nice spacing between the version header and the previous text
 
         if entry.General then
-            current = self:CreateString(addonData.frame, entry.General, fonts.text)
+            self:CreateString(addonData.frame, entry.General, fonts.text)
         end
 
         if entry.Sections then
@@ -187,9 +186,9 @@ function LibChangelog:ShowChangelog(addonName)
                 local sectionName = predefinedSections[i]
                 local section = entry.Sections[sectionName]
                 if section then
-                    current = self:CreateString(addonData.frame, L[sectionName], fonts.title, -8)
+                    self:CreateString(addonData.frame, L[sectionName], fonts.title, -8)
                     for j = 1, #section do
-                        current = self:CreateBulletedListEntry(addonData.frame, section[j], fonts.text)
+                        self:CreateBulletedListEntry(addonData.frame, section[j], fonts.text)
                     end
                 end
             end
