@@ -92,8 +92,8 @@ globals = {
 
 	-- everything else
 
-    'CreateFrame',
-    'UIParent'
+    "CreateFrame",
+    "UIParent",
 	"LibStub",
 	"LoadAddOn",
 	"LOCALE_deDE",
@@ -106,10 +106,10 @@ globals = {
 	"LOCALE_ruRU",
 	"LOCALE_zhCN",
 	"LOCALE_zhTW",
-	'GameFontNormal',
-    'GameFontHighlight',
-	'GameFontNormalHuge',
-    'GameFontDisableHuge',
-    'GameFontDisable',
-    'ButtonFrameTemplate_HidePortrait' 
+	"GameFontNormal",
+    "GameFontHighlight",
+	"GameFontNormalHuge",
+    "GameFontDisableHuge",
+    "GameFontDisable",
+    "ButtonFrameTemplate_HidePortrait" 
 }
