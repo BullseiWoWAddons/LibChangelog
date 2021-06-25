@@ -93,6 +93,7 @@ globals = {
 	-- everything else
 
     "CreateFrame",
+	"GetLocale",
     "UIParent",
 	"LibStub",
 	"LoadAddOn",
