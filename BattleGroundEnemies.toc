@@ -1,0 +1,23 @@
+## Interface: 90005
+## Interface-Retail: 90005
+## Interface-BCC: 20501
+## Title: LibChangelog
+## Version: @project-version@
+## Author: Bullsei
+
+## X-Curse-Project-ID: 497698
+
+
+Locales\enUS.lua
+Locales\deDE.lua
+Locales\esES.lua
+Locales\esMX.lua
+Locales\frFR.lua
+Locales\itIT.lua
+Locales\koKR.lua
+Locales\ptBR.lua
+Locales\ruRU.lua
+Locales\zhCN.lua
+Locales\zhTW.lua
+
+LibChangelog-1.0.xml
