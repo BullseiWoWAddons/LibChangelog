@@ -55,15 +55,16 @@ local VIEWED_MESSAGE_FONTS = {
 
 
 
-function LibChangelog:Register(addonName, changelogTable, lastReadVersion, onlyShowWhenNewVersion)
+function LibChangelog:Register(addonName, changelogTable, savedVariablesTable, lastReadVersionKey, onlyShowWhenNewVersionKey)
 
     if self[addonName] then return error("LibChangelog: '"..addonName.."' already registered", 2) end
 
 
     self[addonName] = {
         changelogTable = changelogTable,
-        lastReadVersion = lastReadVersion,
-        onlyShowWhenNewVersion = onlyShowWhenNewVersion
+        savedVariablesTable = savedVariablesTable,
+        lastReadVersionKey = lastReadVersionKey,
+        onlyShowWhenNewVersionKey = onlyShowWhenNewVersionKey
     }
 end
 
@@ -122,9 +123,11 @@ function LibChangelog:ShowChangelog(addonName)
 
     if not addonData then return error("LibChangelog: '"..addonName.. "' was not registered. Please use :Register() first", 2) end
 
-    local lastEntry = addonData.changelogTable[#addonData.changelogTable]
+    local firstEntry = addonData.changelogTable[1]  --firstEntry contains the newest Version
 
-    if addonData.lastReadVersion and lastEntry.Version <= addonData.lastReadVersion and addonData.onlyShowWhenNewVersion then return end
+    local addonSavedVariablesTable = addonData.savedVariablesTable
+
+    if addonData.lastReadVersionKey and addonSavedVariablesTable[addonData.lastReadVersionKey] and firstEntry.Version <= addonSavedVariablesTable[addonData.lastReadVersionKey] and  addonSavedVariablesTable[addonData.onlyShowWhenNewVersionKey] then return end
 
   
     if not addonData.frame then
@@ -153,11 +156,13 @@ function LibChangelog:ShowChangelog(addonName)
         frame.scrollBar:SetScrollChild(frame.scrollChild)
 
         frame.CheckButton = CreateFrame("CheckButton", nil, frame, "UICheckButtonTemplate")
-        frame.CheckButton:SetChecked(true)
+        frame.CheckButton:SetChecked(addonSavedVariablesTable[addonData.onlyShowWhenNewVersionKey])
         frame.CheckButton:SetFrameStrata("HIGH")
         frame.CheckButton:SetSize(20, 20)
         frame.CheckButton:SetScript("OnClick", function(self)
-            local result = self:GetChecked()
+            local isChecked = self:GetChecked()
+            addonSavedVariablesTable[addonData.onlyShowWhenNewVersionKey] = isChecked
+            frame.CheckButton:SetChecked(isChecked)
         end)
         frame.CheckButton:SetPoint("LEFT", frame, "BOTTOMLEFT", 10, 13)
         frame.CheckButton.text:SetText(L.OnlyShowAfterUpdate)
@@ -169,7 +174,7 @@ function LibChangelog:ShowChangelog(addonName)
     for i = 1, #addonData.changelogTable do
         local entry = addonData.changelogTable[i]
 
-        if addonData.lastReadVersion and addonData.lastReadVersion >= entry.Version then
+        if addonData.lastReadVersionKey and addonSavedVariablesTable[addonData.lastReadVersionKey] and addonSavedVariablesTable[addonData.lastReadVersionKey] >= entry.Version then
             fonts = VIEWED_MESSAGE_FONTS
         end
 
@@ -194,6 +199,8 @@ function LibChangelog:ShowChangelog(addonName)
             end
         end
     end
+
+    addonSavedVariablesTable[addonData.lastReadVersionKey] = firstEntry.Version
 end
 
 
