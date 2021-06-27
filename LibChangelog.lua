@@ -186,7 +186,7 @@ function LibChangelog:ShowChangelog(addonName)
         end
 
         if entry.Sections then
-            local predefinedSections = {"NewFeatures", "Changes", "Bugfixes"}
+            local predefinedSections = {"NewFeatures", "Changes", "Bugfixes", "Removals"}
             for i = 1, #predefinedSections do
                 local sectionName = predefinedSections[i]
                 local section = entry.Sections[sectionName]
