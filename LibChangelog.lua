@@ -135,7 +135,7 @@ function LibChangelog:ShowChangelog(addonName)
 
         local frame = CreateFrame("Frame", nil, UIParent, "ButtonFrameTemplate")
         ButtonFrameTemplate_HidePortrait(frame)
-        frame:SetTitle(addonData.text.title or addonName.." News")
+        frame:SetTitle(addonData.texts.title or addonName.." News")
         frame.Inset:SetPoint("TOPLEFT", 4, -25)
         
         -- frame:EnableMouse(true)
