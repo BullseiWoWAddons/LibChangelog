@@ -176,15 +176,3 @@ function LibChangelog:ShowChangelog(addonName)
 
     addonSavedVariablesTable[addonData.lastReadVersionKey] = firstEntry.Version
 end
-
-
-
-
-
-
-
-
-
-
-
-
