@@ -102,7 +102,7 @@ end
 function LibChangelog:CreateBulletedListEntry(frame, text, font, offset)
     local bullet = self:CreateString(frame, "- ", font, offset)
 
-    local bulletWidth = 20
+    local bulletWidth = 16
 
     bullet:SetWidth(bulletWidth)
     bullet:SetJustifyV("TOP")
