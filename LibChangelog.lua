@@ -65,7 +65,7 @@ function LibChangelog:Register(addonName, changelogTable, savedVariablesTable, l
         savedVariablesTable = savedVariablesTable,
         lastReadVersionKey = lastReadVersionKey,
         onlyShowWhenNewVersionKey = onlyShowWhenNewVersionKey,
-        texts = texts
+        texts = texts or {}
     }
 end
 
