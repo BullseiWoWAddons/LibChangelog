@@ -189,8 +189,8 @@ function LibChangelog:ShowChangelog(addonName)
         if entry.Sections then
             for i = 1, #entry.Sections do
                 local section = entry.Sections[i]
-                self:CreateString(addonData.frame, section, fonts.title, -8)
-                for j = 1, #section do
+                self:CreateString(addonData.frame, section.header, fonts.title, -8)
+                for j = 1, #section.entrys do
                     self:CreateBulletedListEntry(addonData.frame, section[j], fonts.text)
                 end
             end
