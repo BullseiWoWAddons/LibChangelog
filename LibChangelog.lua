@@ -111,7 +111,12 @@ function LibChangelog:ShowChangelog(addonName)
 
         local frame = CreateFrame("Frame", nil, UIParent, "ButtonFrameTemplate")
         ButtonFrameTemplate_HidePortrait(frame)
-        frame:SetTitle(addonData.texts.title or addonName.." News")
+        if frame.SetTitle then
+            frame:SetTitle(addonData.texts.title or addonName.." News")
+        else
+            --workaround for TBCC
+            frame.TitleText:SetText(addonData.texts.title or addonName.." News")
+        end
         frame.Inset:SetPoint("TOPLEFT", 4, -25)
         
         -- frame:EnableMouse(true)
