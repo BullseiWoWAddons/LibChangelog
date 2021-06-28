@@ -55,7 +55,7 @@ local VIEWED_MESSAGE_FONTS = {
 
 
 
-function LibChangelog:Register(addonName, changelogTable, savedVariablesTable, lastReadVersionKey, onlyShowWhenNewVersionKey)
+function LibChangelog:Register(addonName, changelogTable, savedVariablesTable, lastReadVersionKey, onlyShowWhenNewVersionKey, texts)
 
     if self[addonName] then return error("LibChangelog: '"..addonName.."' already registered", 2) end
 
@@ -64,7 +64,8 @@ function LibChangelog:Register(addonName, changelogTable, savedVariablesTable, l
         changelogTable = changelogTable,
         savedVariablesTable = savedVariablesTable,
         lastReadVersionKey = lastReadVersionKey,
-        onlyShowWhenNewVersionKey = onlyShowWhenNewVersionKey
+        onlyShowWhenNewVersionKey = onlyShowWhenNewVersionKey,
+        texts = texts
     }
 end
 
@@ -134,7 +135,7 @@ function LibChangelog:ShowChangelog(addonName)
 
         local frame = CreateFrame("Frame", nil, UIParent, "ButtonFrameTemplate")
         ButtonFrameTemplate_HidePortrait(frame)
-        frame:SetTitle(addonName.. " "..L.News)
+        frame:SetTitle(addonData.text.title or addonName.." News")
         frame.Inset:SetPoint("TOPLEFT", 4, -25)
         
         -- frame:EnableMouse(true)
@@ -165,7 +166,7 @@ function LibChangelog:ShowChangelog(addonName)
             frame.CheckButton:SetChecked(isChecked)
         end)
         frame.CheckButton:SetPoint("LEFT", frame, "BOTTOMLEFT", 10, 13)
-        frame.CheckButton.text:SetText(L.OnlyShowAfterUpdate)
+        frame.CheckButton.text:SetText(addonData.texts.onlyShowWhenNewVersion or "Only Show after next update")
 
         addonData.frame = frame
     end
@@ -186,15 +187,11 @@ function LibChangelog:ShowChangelog(addonName)
         end
 
         if entry.Sections then
-            local predefinedSections = {"NewFeatures", "Changes", "Bugfixes", "Removals"}
-            for i = 1, #predefinedSections do
-                local sectionName = predefinedSections[i]
-                local section = entry.Sections[sectionName]
-                if section then
-                    self:CreateString(addonData.frame, L[sectionName], fonts.title, -8)
-                    for j = 1, #section do
-                        self:CreateBulletedListEntry(addonData.frame, section[j], fonts.text)
-                    end
+            for i = 1, #entry.Sections do
+                local section = entry.Sections[i]
+                self:CreateString(addonData.frame, section, fonts.title, -8)
+                for j = 1, #section do
+                    self:CreateBulletedListEntry(addonData.frame, section[j], fonts.text)
                 end
             end
         end
