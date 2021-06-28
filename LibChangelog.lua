@@ -1,12 +1,7 @@
 --- LibChangelog
 -- Provides an way to create a simple ingame frame to show a changelog
 
---[[
-LibChangelog
 
-Very light wrapper library that combines all the LibChangelog subcomponents into one more easily used whole.
-
-]]
 
 local _, Data = ...
 local L = Data.L
@@ -35,25 +30,6 @@ local VIEWED_MESSAGE_FONTS = {
     title = GameFontDisable,
     text = GameFontDisable
 }
-
--- -------------------------------------------------------------------
--- :RegisterOptionsTable(appName, options, slashcmd, persist)
---
--- - appName - (string) application name
--- - options - table or function ref, see LibChangelogRegistry
--- - slashcmd - slash command (string) or table with commands, or nil to NOT create a slash command
-
---- Register a option table with the LibChangelog registry.
--- You can supply a slash command (or a table of slash commands) to register with LibChangelogCmd directly.
--- @paramsig appName, options [, slashcmd]
--- @param appName The application name for the config table.
--- @param options The option table (or a function to generate one on demand).  http://www.wowace.com/addons/ace3/pages/ace-config-3-0-options-tables/
--- @param slashcmd A slash command to register for the option table, or a table of slash commands.
--- @usage
--- local LibChangelog = LibStub("LibChangelog")
--- LibChangelog:RegisterOptionsTable("MyAddon", myOptions)
-
-
 
 function LibChangelog:Register(addonName, changelogTable, savedVariablesTable, lastReadVersionKey, onlyShowWhenNewVersionKey, texts)
 
