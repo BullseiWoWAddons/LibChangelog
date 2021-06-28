@@ -173,25 +173,26 @@ function LibChangelog:ShowChangelog(addonName)
 
 
     for i = 1, #addonData.changelogTable do
-        local entry = addonData.changelogTable[i]
+        local versionEntry = addonData.changelogTable[i]
 
         if addonData.lastReadVersionKey and addonSavedVariablesTable[addonData.lastReadVersionKey] and addonSavedVariablesTable[addonData.lastReadVersionKey] >= entry.Version then
             fonts = VIEWED_MESSAGE_FONTS
         end
 
         -- Add version string
-        self:CreateString(addonData.frame, entry.Version, fonts.version, -30) --add a nice spacing between the version header and the previous text
+        self:CreateString(addonData.frame, versionEntry.Version, fonts.version, -30) --add a nice spacing between the version header and the previous text
 
-        if entry.General then
-            self:CreateString(addonData.frame, entry.General, fonts.text)
+        if versionEntry.General then
+            self:CreateString(addonData.frame, versionEntry.General, fonts.text)
         end
 
-        if entry.Sections then
-            for i = 1, #entry.Sections do
-                local section = entry.Sections[i]
+        if versionEntry.Sections then
+            for i = 1, #versionEntry.Sections do
+                local section = versionEntry.Sections[i]
                 self:CreateString(addonData.frame, section.Header, fonts.title, -8)
-                for j = 1, #section.Entries do
-                    self:CreateBulletedListEntry(addonData.frame, section[j], fonts.text)
+                local entries = section.Entries
+                for j = 1, #entries do
+                    self:CreateBulletedListEntry(addonData.frame, entries[j], fonts.text)
                 end
             end
         end
