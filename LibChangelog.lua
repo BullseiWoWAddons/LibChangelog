@@ -175,7 +175,7 @@ function LibChangelog:ShowChangelog(addonName)
     for i = 1, #addonData.changelogTable do
         local versionEntry = addonData.changelogTable[i]
 
-        if addonData.lastReadVersionKey and addonSavedVariablesTable[addonData.lastReadVersionKey] and addonSavedVariablesTable[addonData.lastReadVersionKey] >= entry.Version then
+        if addonData.lastReadVersionKey and addonSavedVariablesTable[addonData.lastReadVersionKey] and addonSavedVariablesTable[addonData.lastReadVersionKey] >= versionEntry.Version then
             fonts = VIEWED_MESSAGE_FONTS
         end
 
