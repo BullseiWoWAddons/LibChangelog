@@ -7,7 +7,7 @@ local _, Data = ...
 local L = Data.L
 
 
-local MAJOR, MINOR = "LibChangelog", 0
+local MAJOR, MINOR = "LibChangelog", 1
 local LibChangelog = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not LibChangelog then return end
@@ -152,7 +152,7 @@ function LibChangelog:ShowChangelog(addonName)
         elseif frame.CheckButton.Text
             then  frame.CheckButton.Text:SetText(addonData.texts.onlyShowWhenNewVersion or "Only Show after next update")
         end
-        
+
         addonData.frame = frame
     end
 
