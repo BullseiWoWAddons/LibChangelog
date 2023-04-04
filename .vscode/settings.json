@@ -1,0 +1,12 @@
+{
+    "Lua.diagnostics.globals": [
+        "GameFontNormalHuge",
+        "GameFontNormal",
+        "GameFontHighlight",
+        "GameFontDisableHuge",
+        "GameFontDisable",
+        "ButtonFrameTemplate_HidePortrait",
+        "CreateFrame",
+        "UIParent"
+    ]
+}
